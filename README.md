@@ -36,12 +36,15 @@ For help getting started with Flutter, view our online
 | dayButtonColor          | `Color`         | Colors.red                                                                                                        |
 | todayBorderColor        | `Color`         | Colors.red                                                                                                        |
 | todayButtonColor        | `Colors`        | Colors.red                                                                                                        |
-| selectedDateTime        | `DateTime`      |                                                                                                                   |
+| selectedDateTime        | `DateTime`      |                                                              |
+| selectedDateTimes       | `List<DateTime>`|                                                              |
+| multipleSelectDate      | `bool`          |                                                              |
 | selectedDayTextStyle    | `TextStyle`     | `fontSize: 14.0, color: Colors.white`                                                                             |
 | selectedDayBorderColor  | `Color`         | Colors.green                                                                                                      |
 | selectedDayButtonColor  | `Color`         | Colors.green                                                                                                      |
 | daysHaveCircularBorder  | `bool`          |                                                                                                                   |
 | onDayPressed            | `Func`          |                                                                                                                   |
+| onMultipleDateChanged            | `Func`          |                                                                                                                   |
 | weekdayTextStyle        | `TextStyle`     | `fontSize: 14.0, color: Colors.deepOrange`                                                                        |
 | iconColor               | `Color`         | Colors.blueAccent                                                                                                 |
 | headerTextStyle         | `TextStyle`     | `fontSize: 20.0, color: Colors.blue`                                                                              |
@@ -69,6 +72,7 @@ For help getting started with Flutter, view our online
 | onCalendarChanged       | `Function(DateTime)` |                                                                                                              |
 | minSelectedDate         | `DateTime`      |                                                                                                                   |
 | maxSelectedDate         | `DateTime`      |                                                                                                                   |
+| inactiveDateTimes         | `List<DateTime>`      |                                                                                                                   |
 | inactiveDaysTextStyle   | `TextStyle`     |                                                                                                                   |
 | inactiveWeekendTextStyle | `TextStyle`     |                                                                                                                   |
 

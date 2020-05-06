@@ -173,11 +173,25 @@ class _MyHomePageState extends State<MyHomePage> {
       markedDateMoreShowTotal: false, // null for not showing hidden events indicator
       showHeader: false,
       minSelectedDate: _currentDate,
-      maxSelectedDate: _currentDate.add(Duration(days: 60)),
+      // maxSelectedDate: _currentDate.add(Duration(days: 60)),
 //      inactiveDateColor: Colors.black12,
       onCalendarChanged: (DateTime date){
         this.setState(() => _currentMonth = DateFormat.yMMM().format(date));
       },
+      selectedDateTimes: [
+        DateTime(2020, 5, 15),
+        DateTime(2020, 5, 17),
+        DateTime(2020, 5, 20),
+      ],
+      multipleSelectDate: true,
+      onMultipleDateChanged: (List<DateTime> selected){
+        print(selected.toString());
+      },
+      inactiveDateTimes: [
+        DateTime(2020, 5, 16),
+        DateTime(2020, 5, 18),
+        DateTime(2020, 5, 21),
+      ],
     );
 
 
