@@ -21,7 +21,11 @@ packages:
       name: async
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "2.4.0"
+=======
+    version: "2.3.0"
+>>>>>>> e9c12f79b65687217ae3bc9d59e18c5552e7e90a
   boolean_selector:
     dependency: transitive
     description:
@@ -43,6 +47,7 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.14.11"
+<<<<<<< HEAD
   convert:
     dependency: transitive
     description:
@@ -64,6 +69,8 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.0+2"
+=======
+>>>>>>> e9c12f79b65687217ae3bc9d59e18c5552e7e90a
   flutter:
     dependency: "direct main"
     description: flutter
@@ -87,21 +94,29 @@ packages:
       name: intl
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.15.7"
+    version: "0.16.0"
   matcher:
     dependency: transitive
     description:
       name: matcher
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "0.12.6"
+=======
+    version: "0.12.5"
+>>>>>>> e9c12f79b65687217ae3bc9d59e18c5552e7e90a
   meta:
     dependency: transitive
     description:
       name: meta
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "1.1.8"
+=======
+    version: "1.1.7"
+>>>>>>> e9c12f79b65687217ae3bc9d59e18c5552e7e90a
   path:
     dependency: transitive
     description:
@@ -116,6 +131,7 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.0+1"
+<<<<<<< HEAD
   petitparser:
     dependency: transitive
     description:
@@ -123,6 +139,8 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.4.0"
+=======
+>>>>>>> e9c12f79b65687217ae3bc9d59e18c5552e7e90a
   quiver:
     dependency: transitive
     description:
@@ -176,7 +194,11 @@ packages:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "0.2.11"
+=======
+    version: "0.2.5"
+>>>>>>> e9c12f79b65687217ae3bc9d59e18c5552e7e90a
   typed_data:
     dependency: transitive
     description:
@@ -199,4 +221,8 @@ packages:
     source: hosted
     version: "3.5.0"
 sdks:
+<<<<<<< HEAD
   dart: ">=2.4.0 <3.0.0"
+=======
+  dart: ">=2.2.2 <3.0.0"
+>>>>>>> e9c12f79b65687217ae3bc9d59e18c5552e7e90a
