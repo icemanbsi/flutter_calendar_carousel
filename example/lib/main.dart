@@ -50,7 +50,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   DateTime _currentDate = DateTime(2019, 2, 3);
-  DateTime _currentDate2 = DateTime(2019, 2, 3);
+  DateTime _currentDate2 = null;//DateTime(2019, 2, 3);
   String _currentMonth = DateFormat.yMMM().format(DateTime(2019, 2, 3));
   DateTime _targetDateTime = DateTime(2019, 2, 3);
 //  List<DateTime> _markedDate = [DateTime(2018, 9, 20), DateTime(2018, 10, 11)];
@@ -321,10 +321,36 @@ class _MyHomePageState extends State<MyHomePage> {
       ],
     );
 
+    var _calendarCarousel2 = CalendarCarousel(
+      weekFormat: false,
+      showHeaderButton: false,
+      height: 350.0,
+      selectedDateTime: null,
+      todayBorderColor: Colors.black,
+      todayButtonColor: Colors.white,
+      todayTextStyle: TextStyle(
+        color: Colors.black
+      ),
+      daysHaveCircularBorder: true,
+      thisMonthDayBorderColor: Colors.black,
+      thisMonthInactiveDayBorderColor: Colors.transparent,
+      inactiveDaysTextStyle: TextStyle(
+        decoration: TextDecoration.lineThrough
+      ),
+      inactiveDateTimes: [
+        DateTime.now().add(Duration(days: 7)),
+        DateTime.now().add(Duration(days: 8)),
+        DateTime.now().add(Duration(days: 9)),
+        DateTime.now().add(Duration(days: 10)),
+        DateTime.now().add(Duration(days: 11)),
+      ],
+    );
+
     return new Scaffold(
-        appBar: new AppBar(
-          title: new Text(widget.title),
-        ),
-        body: _calendarCarouselNoHeader);
+      appBar: new AppBar(
+        title: new Text(widget.title),
+      ),
+      body: _calendarCarousel2
+    );
   }
 }

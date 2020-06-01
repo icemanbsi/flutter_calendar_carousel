@@ -38,6 +38,9 @@ For help getting started with Flutter, view our online
 | prevMonthDayBorderColor | `Color`         | Colors.transparent |
 | thisMonthDayBorderColor | `Color`         | Colors.transparent |
 | nextMonthDayBorderColor | `Color`         | Colors.transparent |
+| prevMonthInactiveDayBorderColor | `Color`         |  |
+| thisMonthInactiveDayBorderColor | `Color`         |  |
+| nextMonthInactiveDayBorderColor | `Color`         |  |
 | dayPadding              | `double`        | 2.0 |
 | height                  | `double`        | double.infinity |
 | width                   | `double`        | double.infinity |

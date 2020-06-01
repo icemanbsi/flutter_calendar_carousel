@@ -56,6 +56,9 @@ class CalendarCarousel<T extends EventInterface> extends StatefulWidget {
   final Color prevMonthDayBorderColor;
   final Color thisMonthDayBorderColor;
   final Color nextMonthDayBorderColor;
+  final Color prevMonthInactiveDayBorderColor;
+  final Color thisMonthInactiveDayBorderColor;
+  final Color nextMonthInactiveDayBorderColor;
   final double dayPadding;
   final double height;
   final double width;
@@ -149,6 +152,9 @@ class CalendarCarousel<T extends EventInterface> extends StatefulWidget {
       this.prevMonthDayBorderColor = Colors.transparent,
       this.thisMonthDayBorderColor = Colors.transparent,
       this.nextMonthDayBorderColor = Colors.transparent,
+      this.prevMonthInactiveDayBorderColor,
+      this.thisMonthInactiveDayBorderColor,
+      this.nextMonthInactiveDayBorderColor,
       this.dayPadding = 2.0,
       this.height = double.infinity,
       this.width = double.infinity,
@@ -242,11 +248,18 @@ class _CalendarState<T extends EventInterface>
   PageController _controller;
   List<DateTime> _dates;
   List<List<DateTime>> _weeks;
-  List<DateTime> _selectedDates = [DateTime(
+  List<DateTime> _selectedDates = [
+    // DateTime(
+    //   DateTime.now().year, 
+    //   DateTime.now().month, 
+    //   DateTime.now().day, 
+    // )
+  ];
+  DateTime _now = DateTime(
     DateTime.now().year, 
     DateTime.now().month, 
     DateTime.now().day, 
-  )];
+  );
   DateTime _targetDate;
   int _startWeekday = 0;
   int _endWeekday = 0;
@@ -272,7 +285,9 @@ class _CalendarState<T extends EventInterface>
             DateTime.now().year + 1, DateTime.now().month, DateTime.now().day);
 
     if (widget.selectedDateTime != null)
-      _selectedDates = [widget.selectedDateTime];
+      _selectedDates = [
+        // widget.selectedDateTime
+        ];
 
     if (widget.targetDateTime != null) {
       if (widget.targetDateTime.difference(minDate).inDays < 0) {
@@ -283,7 +298,7 @@ class _CalendarState<T extends EventInterface>
         _targetDate = widget.targetDateTime;
       }
     } else {
-      _targetDate = _selectedDates.last;
+      _targetDate = _selectedDates.isEmpty ? _now :  _selectedDates.last;
     }
 
     if (widget.weekFormat) {
@@ -298,7 +313,7 @@ class _CalendarState<T extends EventInterface>
         this._pageNum = _cnt + 1;
       }
     } else {
-      _targetDate = _selectedDates.last;
+      _targetDate = _selectedDates.isEmpty ? _now :  _selectedDates.last;
       for (int _cnt = 0;
           0 >
               DateTime(
@@ -545,10 +560,10 @@ class _CalendarState<T extends EventInterface>
                                 : isToday && widget.todayBorderColor != null
                                     ? widget.todayBorderColor
                                     : isPrevMonthDay
-                                        ? widget.prevMonthDayBorderColor
+                                        ? (isSelectable ? widget.prevMonthDayBorderColor : (widget.prevMonthInactiveDayBorderColor ?? widget.prevMonthDayBorderColor))
                                         : isNextMonthDay
-                                            ? widget.nextMonthDayBorderColor
-                                            : widget.thisMonthDayBorderColor,
+                                            ? (isSelectable ? widget.nextMonthDayBorderColor : (widget.nextMonthInactiveDayBorderColor ?? widget.nextMonthDayBorderColor))
+                                            : (isSelectable ? widget.thisMonthDayBorderColor : (widget.thisMonthInactiveDayBorderColor ?? widget.thisMonthDayBorderColor)),
                           ),
                         )
                       : RoundedRectangleBorder(
@@ -560,10 +575,10 @@ class _CalendarState<T extends EventInterface>
                                 : isToday && widget.todayBorderColor != null
                                     ? widget.todayBorderColor
                                     : isPrevMonthDay
-                                        ? widget.prevMonthDayBorderColor
+                                        ? (isSelectable ? widget.prevMonthDayBorderColor : (widget.prevMonthInactiveDayBorderColor ?? widget.prevMonthDayBorderColor))
                                         : isNextMonthDay
-                                            ? widget.nextMonthDayBorderColor
-                                            : widget.thisMonthDayBorderColor,
+                                            ? (isSelectable ? widget.nextMonthDayBorderColor : (widget.nextMonthInactiveDayBorderColor ?? widget.nextMonthDayBorderColor))
+                                            : (isSelectable ? widget.thisMonthDayBorderColor : (widget.thisMonthInactiveDayBorderColor ?? widget.thisMonthDayBorderColor)),
                           ),
                         ),
           child: Stack(
@@ -686,6 +701,7 @@ class _CalendarState<T extends EventInterface>
                   }
                   else{
                     isSelectedDay = this._selectedDates != null &&
+                      this._selectedDates.isNotEmpty && 
                       this._selectedDates.last.year == now.year &&
                       this._selectedDates.last.month == now.month &&
                       this._selectedDates.last.day == now.day;
@@ -944,7 +960,7 @@ class _CalendarState<T extends EventInterface>
   Future<Null> _selectDateFromPicker() async {
     DateTime selected = await showDatePicker(
       context: context,
-      initialDate: _selectedDates.last ?? new DateTime.now(),
+      initialDate: _selectedDates.isNotEmpty ? _selectedDates.last : _now,
       firstDate: minDate,
       lastDate: maxDate,
     );
